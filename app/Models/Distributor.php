@@ -8,24 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Distributor extends Model
 {
     protected $table = 'distributors';
-
     protected $fillable = [
         'contact_person',
         'company_name',
-        'address',
+        'adress',
         'postal_code',
         'phone_number',
         'email',
         'country',
         'next_delivery',
     ];
+    // Haal de leverancier op met de producten 
     public static function distributorWithProducts($id)
     {
-        return DB::table('distributors')
-            ->join('products', 'distributors.id', '=', 'products.distributors_id')
+        return DB::table('products')
+            ->join('distributors', 'products.distributors_id', '=', 'distributors.id',)
             ->where('distributors.id', $id)
-            ->select('distributors.*', 'products.name as productName', 'products.description as productDescription')
+            ->select('products.name', 'products.amount', 'products.barcode', 'products.description')
             ->get();
+
+        // dd($result);
     }
 
     public function products()

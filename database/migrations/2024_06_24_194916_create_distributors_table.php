@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('email');
             $table->string('country');
+            $table->dateTime('next_delivery');
             $table->timestamps();
         });
     }

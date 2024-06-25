@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('user_id')->constrained();
-            $table->integer('date_created');
-            $table->integer('date_picked_up')->nullable();
+            $table->date('date_created');
+            $table->date('date_picked_up')->nullable();
             $table->timestamps();
         });
     }

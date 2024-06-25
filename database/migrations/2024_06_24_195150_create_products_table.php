@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('amount');
             $table->bigInteger('barcode');
             $table->string('description');
-            $table->foreignId('distributors_id')->constrained();
+            $table->foreignId('distributors_id')->constrained()->nullable();
             $table->timestamps();
         });
     }

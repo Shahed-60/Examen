@@ -37,14 +37,18 @@ class StockManagementController extends Controller
 
     public function destroy($productId)
     {
+        // Check if the product is in use in a package
         $packageId = ProductsPerPackage::where('product_id', $productId)->value('package_id');
 
+        // If the product is in use, redirect back with a message
         if ($packageId) {
             return redirect()->route('stock_management.read')->with('status', 'Dit product is in gebruik in een van onze voedselpakketen, en kan dus niet verwijderd worden');
         } else {
+            // If the product is not in use, delete the product
             $product = Product::find($productId);
             $product->delete();
 
+            // Redirect back with a message
             return redirect()->route('stock_management.read')->with('status', 'Product succesvol verwijderd!');
         }
     }

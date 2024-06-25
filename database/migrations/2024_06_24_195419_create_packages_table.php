@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('product_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->integer('date_created');
-            $table->integer('date_picked_up');
+            $table->date('date_created');
+            $table->date('date_picked_up')->nullable();
             $table->timestamps();
         });
     }

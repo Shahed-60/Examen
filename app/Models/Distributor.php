@@ -16,7 +16,6 @@ class Distributor extends Model
         'phone_number',
         'email',
         'country',
+        'next_delivery',
     ];
-
-
 }

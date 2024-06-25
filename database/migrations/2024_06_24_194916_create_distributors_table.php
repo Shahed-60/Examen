@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('email');
             $table->string('country');
-            $table->dateTime('next_delivery');
+            $table->dateTime('next_delivery')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('distributorss');
+        Schema::dropIfExists('distributors');
     }
 };

@@ -28,4 +28,9 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    public function distributor()
+    {
+        return $this->belongsTo(Distributor::class, 'distributors_id');
+    }
 }

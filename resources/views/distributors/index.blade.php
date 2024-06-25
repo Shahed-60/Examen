@@ -34,7 +34,7 @@
                     <td style="border: 1px solid black; padding: 1px;">{{ $distributor->next_delivery }}</td>
                     <td style="border: 1px solid black; padding: 1px;">
                         <a href="{{ route('distributors.show', $distributor->id) }}">
-                            Click ME</a>
+                            Bekijken</a>
                     </td>
                     <td style="border: 1px solid black; padding: 1px;">
                         <a href="{{ route('distributors.edit', $distributor->id) }}">Bewerk</a>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductsPerPackage extends Model
 {
-    protected $table = 'ProductsPerPackage';
+    protected $table = 'products_per_package';
 
     protected $fillable = [
         'product_id',
@@ -21,6 +21,6 @@ class ProductsPerPackage extends Model
 
     public function package()
     {
-        return $this->belongsTo(Package::class, 'package_id');
+        return $this->belongsTo(Packages::class, 'package_id');
     }
 }

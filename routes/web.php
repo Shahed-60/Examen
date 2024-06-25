@@ -41,7 +41,8 @@ Route::get('stock_management/update/{productId}', ([StockManagementController::c
 ->name('stock_management.update');
 
 //edit function
-Route::post('/stock_management/edit', [StockManagementController::class, 'edit'])->name('stock_management.edit');
+Route::post('/stock_management/edit', [StockManagementController::class, 'edit'])
+    ->name('stock_management.edit');
 
 //create view
 Route::get('stock_management/create', ([StockManagementController::class, 'create']))->middleware(['auth', 'verified'])

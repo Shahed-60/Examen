@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StockManagementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,39 @@ Route::get('/packages/show', [PackagesController::class, 'show'])->name('package
 Route::get('/packages/create', [PackagesController::class, 'create'])->name('packages.create');
 Route::post('/packages', [PackagesController::class, 'store'])->name('packages.store');
 Route::delete('/packages/show/{id}', [PackagesController::class, 'destroy'])->name('packages.destroy');
+
+
+// Route::get('stock_management/read', function () {
+//     return view('stock_management/read');
+// })->middleware(['auth', 'verified'])->name('stock_management.read');
+
+//stock management routes
+
+//read
+Route::get('stock_management/read', ([StockManagementController::class, 'read']))->middleware(['auth', 'verified'])
+->name('stock_management.read');
+
+//delete
+Route::delete('/stock_management/read/{productId}', [StockManagementController::class, 'destroy'])->name('stock_management.destroy');
+
+//update view
+Route::get('stock_management/update/{productId}', ([StockManagementController::class, 'update']))->middleware(['auth', 'verified'])
+->name('stock_management.update');
+
+//edit function
+Route::post('/stock_management/edit', [StockManagementController::class, 'edit'])
+    ->name('stock_management.edit');
+
+//create view
+Route::get('stock_management/create', ([StockManagementController::class, 'create']))->middleware(['auth', 'verified'])
+    ->name('stock_management.create');
+
+//store function
+Route::post('/stock_management/store', [StockManagementController::class, 'store'])->name('stock_management.store');
+
+
+
+
 
 
 Route::middleware('auth')->group(function () {

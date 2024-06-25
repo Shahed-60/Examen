@@ -112,7 +112,6 @@ class StockManagementController extends Controller
         $product->amount = $request->input('amount');
         $product->save();
 
-
         // Redirect back with a message
         return redirect()->route('stock_management.read')->with('status', 'Nieuw product succesvol toegevoegd!');
     }

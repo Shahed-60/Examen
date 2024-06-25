@@ -26,10 +26,7 @@ class Distributor extends Model
             ->where('distributors.id', $id)
             ->select('products.name', 'products.amount', 'products.barcode', 'products.description')
             ->get();
-
-        // dd($result);
     }
-
     public function products()
     {
         return $this->hasMany(Product::class, 'distributors_id');

@@ -14,7 +14,8 @@ class Product extends Model
         'category_id',
         'amount',
         'barcode',
-        'description',       
+        'description',
+        'distributors_id'
     ];
 
     // Add any relationships or additional methods here

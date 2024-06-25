@@ -12,10 +12,10 @@ class PackagesController extends Controller
     public function show()
     {
         $packages = ProductsPerPackage::join('packages', 'products_per_package.package_id', '=', 'packages.id')
-                                        ->join('products', 'products_per_package.product_id', '=', 'products.id')
-                                        ->select('packages.*', 'products.name as product_name')
-                                        ->orderBy('packages.id')
-                                        ->get();         
+            ->join('products', 'products_per_package.product_id', '=', 'products.id')
+            ->select('packages.*', 'products.name as product_name')
+            ->orderBy('packages.id')
+            ->get();
         return view('packages.show', ['packages' => $packages]);
     }
 
@@ -48,7 +48,7 @@ class PackagesController extends Controller
         $package->products()->attach($request->products);
 
         return redirect()->route('packages.show')
-                         ->with('success', 'Package created successfully');
+            ->with('success', 'Package created successfully');
     }
 
     public function destroy($id)
@@ -56,18 +56,18 @@ class PackagesController extends Controller
         try {
             // Find the package
             $package = Packages::findOrFail($id);
-            
+
             // Delete all related records in products_per_package pivot table
             ProductsPerPackage::where('package_id', $id)->delete();
-            
+
             // Delete the package itself
             $package->delete();
 
             return redirect()->route('packages.show')
-                             ->with('success', 'Package deleted successfully');
+                ->with('success', 'Package deleted successfully');
         } catch (\Exception $e) {
             return redirect()->route('packages.show')
-                             ->with('error', 'Failed to delete package. ' . $e->getMessage());
+                ->with('error', 'Failed to delete package. ' . $e->getMessage());
+        }
     }
-}
 }

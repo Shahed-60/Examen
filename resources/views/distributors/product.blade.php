@@ -14,19 +14,19 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @if ($distributor->products->isNotEmpty()) --}}
-            @foreach ($distributorWithProducts as $product)
-                <tr>
-                    <td style="border: 1px solid black; padding: 1px;">{{ $product->name }}</td>
-                    <td style="border: 1px solid black; padding: 1px;">{{ $product->amount }}</td>
-                    <td style="border: 1px solid black; padding: 1px;">{{ $product->barcode }}</td>
-                    <td style="border: 1px solid black; padding: 1px;">{{ $product->description }}</td>
-                </tr>
-            @endforeach
-            {{-- @else
+            @if ($distributorWithProducts->isNotEmpty())
+                @foreach ($distributorWithProducts as $product)
+                    <tr>
+                        <td style="border: 1px solid black; padding: 1px;">{{ $product->name }}</td>
+                        <td style="border: 1px solid black; padding: 1px;">{{ $product->amount }}</td>
+                        <td style="border: 1px solid black; padding: 1px;">{{ $product->barcode }}</td>
+                        <td style="border: 1px solid black; padding: 1px;">{{ $product->description }}</td>
+                    </tr>
+                @endforeach
+            @else
                 <tr>
                     <td colspan="4" style="border: 1px solid black; padding: 1px;">Geen producten gevonden</td>
                 </tr>
-            @endif --}}
+            @endif
         </tbody>
 </x-app-layout>

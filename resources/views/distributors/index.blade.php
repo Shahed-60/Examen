@@ -16,6 +16,9 @@
                 <th scope="col" style="border: 1px solid black; padding: 8px;">Telfoonnummer</th>
                 <th scope="col" style="border: 1px solid black; padding: 8px;">EersteVolgende Levering</th>
                 <th scope="col" style="border: 1px solid black; padding: 8px;">Toon Producten</th>
+                <th scope="col" style="border: 1px solid black; padding: 8px;">Bewerken</th>
+                <th scope="col" style="border: 1px solid black; padding: 8px;">Verwijderen</th>
+
             </tr>
         </thead>
         <tbody>
@@ -30,10 +33,23 @@
                     <td style="border: 1px solid black; padding: 1px;">{{ $distributor->phone_number }}</td>
                     <td style="border: 1px solid black; padding: 1px;">{{ $distributor->next_delivery }}</td>
                     <td style="border: 1px solid black; padding: 1px;">
-                        {{-- <a href="/distributors/{{ $distributor->id }}">{{ $distributor->name }}</a> --}}
-                        <a href="{{ route('distributors.show', $distributor->id) }}">Click ME</a>
+                        <a href="{{ route('distributors.show', $distributor->id) }}">
+                            Click ME</a>
                     </td>
-                </tr>
+                    <td style="border: 1px solid black; padding: 1px;">
+                        <a href="{{ route('distributors.edit', $distributor->id) }}">Bewerk</a>
+                    </td>
+                    <td style="border: 1px solid black; padding: 1px;">
+                        <form action="{{ route('distributors.destroy', $distributor->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Verwijder</button>
+                        </form>
+                    </td>
             @endforeach
         </tbody>
+    </table>
+    <a href="{{ route('distributors.create') }}"
+        style="background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 12px;">Nieuwe
+        Leverancier Toevoegen</a>
 </x-app-layout>

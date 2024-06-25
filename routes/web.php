@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,13 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/packages/show', [PackagesController::class, 'show'])->name('packages.show');
+Route::get('/packages/create', [PackagesController::class, 'create'])->name('packages.create');
+Route::post('/packages', [PackagesController::class, 'store'])->name('packages.store');
+Route::delete('/packages/show/{id}', [PackagesController::class, 'destroy'])->name('packages.destroy');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

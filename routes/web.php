@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DistributorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-require __DIR__.'/auth.php';
+// link naar de index methode van de DistributorController en daar laat die ee view zien met de data van de distributors
+Route::get('/distributors', [DistributorController::class, 'index'])->name('distributors.index');
+// link naar de show methode van de DistributorController en daar laat die een view zien met de data van de distributor met het id dat je meegeeft
+Route::get('/distributors/{id}', [DistributorController::class, 'show'])->name('distributors.show');
+Route::get('/distributor/{id}', 'DistributorController@show')->name('distributor.show');
+require __DIR__ . '/auth.php';

@@ -55,9 +55,12 @@ class StockManagementController extends Controller
 
     public function update($productId)
     {
+        // Get the product data
         $productData = Product::find($productId);
+        // Get all categories
         $categories = \App\Models\Category::all();
 
+        // Return the view with the product data and categories
         return view('stock_management/update', ['productData' => $productData, 'categories' => $categories]);
     }
 

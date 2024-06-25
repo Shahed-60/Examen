@@ -66,6 +66,7 @@ class StockManagementController extends Controller
 
     public function edit(Request $request)
     {
+        // Validate the request
         $request->validate([
             'productname' => 'required',
             'amount' => 'required',
@@ -73,7 +74,7 @@ class StockManagementController extends Controller
             'category_id' => 'required',
         ]);
 
-
+        // Update the product
         $product = Product::find($request->productId);
         $product->barcode = $request->input('barcode');
         $product->name = $request->input('productname');
@@ -81,19 +82,22 @@ class StockManagementController extends Controller
         $product->amount = $request->input('amount');
         $product->save();
 
+        // Redirect back with a message
         return redirect()->route('stock_management.read')->with('status', 'Product succesvol aangepast!');
-
     }
 
     public function create()
     {
+        // Get all categories
         $categories = \App\Models\Category::all();
 
+        // Return the view with the categories
         return view('stock_management/create', ['categories' => $categories]);
     }
 
     public function store(Request $request)
     {
+        // Validate the request
         $request->validate([
             'barcode' => 'required',
             'productname' => 'required',
@@ -108,6 +112,8 @@ class StockManagementController extends Controller
         $product->amount = $request->input('amount');
         $product->save();
 
+
+        // Redirect back with a message
         return redirect()->route('stock_management.read')->with('status', 'Nieuw product succesvol toegevoegd!');
     }
 }

@@ -45,7 +45,7 @@ class ProductsSeeder extends Seeder
                 'amount' => 250,
                 'barcode' => 1234567890125,
                 'description' => 'Vers gebakken wit brood',
-                'distributors_id' => 2,
+                'distributors_id' => null,
             ],
             [
                 'name' => 'Koffie',

@@ -34,10 +34,6 @@ Route::get('stock_management/read', ([StockManagementController::class, 'read'])
 ->name('stock_management.read');
 
 //delete
-// Route::get('stock_management/read', ([StockManagementController::class, 'read']))->middleware(['auth', 'verified'])
-//     ->name('stock_management.destroy');
-
-//delete
 Route::delete('/stock_management/read/{productId}', [StockManagementController::class, 'destroy'])->name('stock_management.destroy');
 
 //update view

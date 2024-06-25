@@ -12,11 +12,11 @@
                     <form action="{{ route('packages.store') }}" method="POST">
                         @csrf
                         <div class="mb-4">
-                        <label for="users" class="block text-sm font-medium text-gray-700">Klant</label>
+                            <label for="users" class="block text-sm font-medium text-gray-700">Klant</label>
                             <select name="users[]" id="user_id" multiple class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                            @foreach($users as $user)
-                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->id }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -40,6 +40,16 @@
                         <div class="flex items-center justify-end">
                             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add Package</button>
                         </div>
+                    </form>
+                    @if ($errors->any())
+                        <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <strong class="font-bold">Oops!</strong>
+                            <span class="block sm:inline">Failed to add new package.</span>
+                            @foreach ($errors->all() as $error)
+                                <span class="block sm:inline">{{ $error }}</span>
+                            @endforeach
+                        </div>
+                    @endif
                     </form>
                 </div>
             </div>

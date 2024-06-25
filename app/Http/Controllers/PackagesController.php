@@ -12,10 +12,10 @@ class PackagesController extends Controller
     public function show()
     {
         $packages = ProductsPerPackage::join('packages', 'products_per_package.package_id', '=', 'packages.id')
-            ->join('products', 'products_per_package.product_id', '=', 'products.id')
-            ->select('packages.*', 'products.name as product_name')
-            ->orderBy('packages.id')
-            ->get();
+                                        ->join('products', 'products_per_package.product_id', '=', 'products.id')
+                                        ->select('packages.*', 'products.name as product_name')
+                                        ->orderBy('packages.id')
+                                        ->get();
         return view('packages.show', ['packages' => $packages]);
     }
 

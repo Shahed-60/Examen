@@ -68,6 +68,6 @@ class PackagesController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('packages.show')
                              ->with('error', 'Failed to delete package. ' . $e->getMessage());
-        }
     }
+}
 }
